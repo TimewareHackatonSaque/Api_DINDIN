@@ -12,8 +12,8 @@ import { UserModule } from './user/user.module';
       type: 'mysql',
       host: 'localhost',
       port: 3306,
-      username: 'root',
-      password: 'password', 
+      username: 'root', //usuario do banco
+      password: 'password', //senha do banco
       database: 'loan_simulation_db',
       autoLoadEntities: true, // Carrega automaticamente todas as entidades
       synchronize: true,  // Sincroniza automaticamente as entidades com o banco
