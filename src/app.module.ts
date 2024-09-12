@@ -13,7 +13,7 @@ import { UserModule } from './user/user.module';
       host: 'localhost',
       port: 3306,
       username: 'root',
-      password: 'felipe2013', 
+      password: 'password', 
       database: 'loan_simulation_db',
       autoLoadEntities: true, // Carrega automaticamente todas as entidades
       synchronize: true,  // Sincroniza automaticamente as entidades com o banco
