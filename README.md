@@ -1,3 +1,39 @@
+Tabelas 
+
+CREATE TABLE `bank` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  `annualCET` int NOT NULL,
+  PRIMARY KEY (`id`)
+) 
+
+CREATE TABLE `users` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `nome` varchar(255) NOT NULL,
+  `telefone` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `senha` varchar(255) NOT NULL,
+  `cpf` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+)
+
+
+
+CREATE TABLE `loan_simulation_histories` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `loanAmount` decimal(10,2) NOT NULL,
+  `annualCET` decimal(5,2) NOT NULL,
+  `numberOfInstallments` int NOT NULL,
+  `createdAt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `userId` int DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK_fd2db51d9acbf84f1b5219b8801` (`userId`),
+  CONSTRAINT `FK_fd2db51d9acbf84f1b5219b8801` FOREIGN KEY (`userId`) REFERENCES `users` (`id`)
+)
+
+
+
+
 <p align="center">
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
 </p>
