@@ -1,23 +1,24 @@
-import { Column, CreateDateColumn, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { User } from '../user/user.entity';
+import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { User } from '../user/user.entity'; // Ajuste o caminho para a entidade User
 
-@Entity('loan_simulation_histories') // Nome da tabela, opcional
+@Entity('loan_simulation_histories')
 export class LoanSimulationHistory {
-  @PrimaryGeneratedColumn() // Gera o ID automaticamente
+  @PrimaryGeneratedColumn()
   id: number;
 
-  @Column('decimal', { precision: 10, scale: 2 }) // Valor do empréstimo com precisão
+  @Column({ type: 'decimal', precision: 10, scale: 2 })
   loanAmount: number;
 
-  @Column('decimal', { precision: 5, scale: 2 }) // CET anual com precisão
+  @Column({ type: 'decimal', precision: 5, scale: 2 })
   annualCET: number;
 
-  @Column() // Número de parcelas
+  @Column()
   numberOfInstallments: number;
 
-  @CreateDateColumn() // Data de criação automática
+  @Column({ type: 'datetime', default: () => 'CURRENT_TIMESTAMP' })
   createdAt: Date;
 
-  @ManyToOne(() => User, (user) => user.loanSimulationHistories) // Relacionamento muitos-para-um com User
+  @ManyToOne(() => User, user => user.loanSimulationHistories, { nullable: true })
+  @JoinColumn({ name: 'userId' })
   user: User;
 }

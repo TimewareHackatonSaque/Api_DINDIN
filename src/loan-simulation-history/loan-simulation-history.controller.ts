@@ -1,4 +1,14 @@
-import { Controller } from '@nestjs/common';
+import { Controller, Get, Param } from '@nestjs/common';
+import { LoanSimulationHistoryService } from './loan-simulation-history.service';
 
-@Controller('loan-simulation-history')
-export class LoanSimulationHistoryController {}
+@Controller('historico')
+export class LoanSimulationHistoryController {
+  constructor(
+    private readonly loanSimulationHistoryService: LoanSimulationHistoryService,
+  ) {}
+
+  @Get('/user/:userId')
+  async getSimulationDetails(@Param('userId') userId: number) {
+    return this.loanSimulationHistoryService.getSimulationDetails(userId);
+  }
+}
