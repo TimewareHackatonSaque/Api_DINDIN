@@ -31,6 +31,16 @@ CREATE TABLE `loan_simulation_histories` (
   CONSTRAINT `FK_fd2db51d9acbf84f1b5219b8801` FOREIGN KEY (`userId`) REFERENCES `users` (`id`)
 )
 
+INSERT BANK
+
+INSERT INTO `bank` (`name`, `annualCET`)
+VALUES
+  ('Pan', 10),
+  ('Santander', 12),
+  ('Bradesco', 11),
+  ('Itau', 9),
+  ('NuBank', 8);
+
 
 
 
